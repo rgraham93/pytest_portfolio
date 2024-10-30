@@ -11,7 +11,7 @@ from utils.common_utils import *
     name="test_status_for_request_is_files_delivered"
 )
 @pytest.mark.parametrize(
-    "upload_text_file_to_s3_bucket, get_requestid_from_db",
+    "upload_text_file_to_s3_bucket, get_status_of_request_from_db",
     [
         (
             (
@@ -21,7 +21,7 @@ from utils.common_utils import *
             "A000001",
         )
     ],
-    indirect=["upload_text_file_to_s3_bucket", "get_requestid_from_db"],
+    indirect=["upload_text_file_to_s3_bucket", "get_status_of_request_from_db"],
 )
 @allure.story("GRA-1")
 @allure.description(
@@ -35,5 +35,5 @@ from utils.common_utils import *
 def test_status_for_request_is_files_delivered(
     fig,
     upload_text_file_to_s3_bucket,
-    get_requestid_from_db,
+    get_status_of_request_from_db,
 ):
