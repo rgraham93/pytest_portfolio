@@ -6,6 +6,8 @@ from utils.common_utils import *
 
 # PyTest example using markers, fixture parametrization, allure report, and TestRail integration
 @pytest.mark.regression
+@pytest.mark.e2e
+@pytest.mark.customer_portal
 @pytest.mark.dependency(
     name="test_status_for_request_is_files_delivered"
 )
@@ -36,4 +38,4 @@ def test_status_for_request_is_files_delivered(
     upload_text_file_to_s3_bucket,
     get_status_of_request_from_db,
 ):
-    
+    assert get_status_of_request_from_db == "FilesDelivered", "Expected status was not returned."
