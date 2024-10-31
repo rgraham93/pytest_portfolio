@@ -22,8 +22,8 @@ on:
         options:
           - nonprod
           - staging
-  schedule:
-    - cron: '0 0 * * *'
+  # schedule:
+  #   - cron: '0 0 * * *'
 
 jobs:
   regression_testing:
