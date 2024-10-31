@@ -1,0 +1,36 @@
+name: Regression Testing
+run-name: "Regression Testing for ${{ inputs.marker }} by @${{ github.actor }} Branch: ${{ github.ref_name }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      marker:
+        description: "Suite of tests to run"
+        required: false
+        default: "regression"
+        type: choice
+        options:
+          - regression
+          - functional
+          - e2e
+          - customer_portal
+      CONFIG_ENV:
+        description: "CONFIG_ENV"
+        required: false
+        default: "qa"
+        type: choice
+        options:
+          - nonprod
+          - staging
+  # schedule:
+  #   - cron: '0 0 * * *'
+
+jobs:
+  regression_testing:
+    if: github.event_name == 'workflow_dispatch'
+    uses: rgraham/github-actions/.github/workflows/regression_test.yaml@main
+    with:
+      project: "Customer Portal Regression Testing"
+      runner_group: qa-test-k8s-runner
+      marker: ${{ inputs.marker }}
+      CONFIG_ENV: ${{ inputs.CONFIG_ENV }}

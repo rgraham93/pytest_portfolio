@@ -1,0 +1,8 @@
+{
+    "env": "nonprod",
+    "dbname": "postgres",
+    "user": "postgres",
+    "pass": "postgres",
+    "host": "localhost",
+    "port": "5432"
+}

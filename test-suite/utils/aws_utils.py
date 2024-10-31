@@ -1,0 +1,1 @@
+# get_secret_v2 function would exist here
