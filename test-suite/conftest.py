@@ -17,12 +17,14 @@ def upload_text_file_to_s3_bucket(fig, request):
     # Wait for request to process
     time.sleep(3)
 
+@pytest.fixture
 def get_status_of_request_from_db(get_postgresql_db_conn, request):
     request_id = request.param
 
-    cur.execute(f"select * from customerrequest cr where cr.requestid = '{request_id}' order by desc")
-    row = cur.fetchone()
-    status = row[2]
+    with get_postgresql_db_conn.cursor() as cur:
+        cur.execute(f"select * from customerrequest cr where cr.requestid = '{request_id}'")
+        row = cur.fetchone()
+        status = row[2]
 
     return status
 

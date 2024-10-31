@@ -1,11 +1,10 @@
 import pytest
 import allure
-import json
-import time
 from pytest_testrail_plugin.plugin import pytestrail
 from utils.aws_utils import get_secret_v2
 from utils.common_utils import *
 
+# PyTest example using markers, fixture parametrization, allure report, and TestRail integration
 @pytest.mark.regression
 @pytest.mark.dependency(
     name="test_status_for_request_is_files_delivered"
@@ -37,3 +36,4 @@ def test_status_for_request_is_files_delivered(
     upload_text_file_to_s3_bucket,
     get_status_of_request_from_db,
 ):
+    
